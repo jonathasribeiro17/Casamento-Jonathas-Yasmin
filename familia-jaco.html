@@ -1,85 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" >
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Confirmação de Presença | Família Jaco</title>
   <style>
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
-      color: #333;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 40px 20px;
-      min-height: 100vh;
+      height: 100vh;
+      color: #333;
+      text-align: center;
+      padding: 20px;
     }
 
     .container {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
+      background: #fff;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      max-width: 400px;
       width: 100%;
-      text-align: center;
     }
 
     h1 {
       margin-bottom: 10px;
+      font-weight: 700;
+      color: #6200ea;
     }
 
     h2 {
       margin-top: 0;
-      font-weight: normal;
-      color: #666;
+      margin-bottom: 25px;
+      font-weight: 400;
+      color: #444;
     }
 
     button {
-      padding: 12px 24px;
-      margin: 10px;
+      background-color: #6200ea;
+      color: white;
       border: none;
-      border-radius: 8px;
-      font-size: 16px;
+      border-radius: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
       cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .yes {
-      background-color: #4caf50;
-      color: white;
-    }
-
-    .no {
-      background-color: #f44336;
-      color: white;
+      transition: background-color 0.3s ease;
+      width: 100%;
     }
 
     button:hover {
-      opacity: 0.9;
+      background-color: #4b00b5;
     }
 
-    .form-section {
-      display: none;
-      margin-top: 20px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    input[type="checkbox"] {
-      margin-right: 8px;
-    }
-
-    .submit-btn {
-      background-color: #6200ea;
-      color: white;
-      margin-top: 15px;
+    p {
+      font-size: 16px;
+      margin-bottom: 35px;
+      color: #666;
     }
   </style>
 </head>
@@ -87,32 +67,11 @@
   <div class="container">
     <h1>Casamento de Ana & Pedro</h1>
     <h2>Família Jaco</h2>
-    <p>Você foi convidado com muito carinho 💖</p>
-    <p>Confirme sua presença até <strong>01/11/2025</strong></p>
-
-    <div>
-      <button class="yes" onclick="showForm(true)">Sim, eu vou</button>
-      <button class="no" onclick="showForm(false)">Não poderei ir</button>
-    </div>
-
-    <div class="form-section" id="formSection">
-      <form id="rsvpForm" target="_blank" action="https://docs.google.com/forms/d/e/1FAIpQLSfK7KGYVYOgBl__a9b9c33QgAOkF4D8ZZ5hegBJFUUKo4xGJg/viewform?usp=dialog">
-        <label><input type="checkbox" name="entry.1234567890" value="Jaco" /> Jaco</label>
-        <label><input type="checkbox" name="entry.1234567890" value="Tia Maria" /> Tia Maria</label>
-        <label>Outro membro: <input type="text" name="entry.1234567890" /></label>
-
-        <input type="hidden" name="entry.9876543210" id="presencaField" value="" />
-
-        <button type="submit" class="submit-btn">Enviar Confirmação</button>
-      </form>
-    </div>
+    <p>Você foi convidado com muito carinho 💖<br />  
+    Clique no botão abaixo para confirmar sua presença e escolher quem vai da família.</p>
+    <button onclick="window.location.href='https://forms.gle/2YKmbTL7KBqgHjbC7'">
+      Confirmar Presença
+    </button>
   </div>
-
-  <script>
-    function showForm(going) {
-      document.getElementById("formSection").style.display = "block";
-      document.getElementById("presencaField").value = going ? "Sim" : "Não";
-    }
-  </script>
 </body>
 </html>
