@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Família Jaco - Confirmação de Presença</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #555;
+      text-align: center;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #5a67d8;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #434190;
+    }
+
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Família Jaco</h1>
+  <p>Estamos muito felizes em convidá-los para o nosso casamento! Por favor, confirmem sua presença preenchendo o formulário abaixo.</p>
+
+  <form action="https://formspree.io/f/{SEU_ID_AQUI}" method="POST" id="rsvp-form">
+    <label for="nome">Nome Completo</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="quantidade">Número de pessoas</label>
+    <input type="number" id="quantidade" name="quantidade" min="1" max="10" required>
+
+    <label for="presenca">Você vai ao casamento?</label>
+    <select id="presenca" name="presenca" required>
+      <option value="">Selecione</option>
+      <option value="Sim">Sim, com certeza!</option>
+      <option value="Não">Infelizmente não poderei ir</option>
+    </select>
+
+    <label for="mensagem">Mensagem ou observação</label>
+    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Ex: Levo criança, tenho alergia, etc."></textarea>
+
+    <button type="submit">Confirmar Presença</button>
+
+    <div class="success-message" id="success-message">
+      Obrigado! Sua presença foi confirmada com sucesso.
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById("rsvp-form");
+    const successMessage = document.getElementById("success-message");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          successMessage.style.display = "block";
+        } else {
+          alert("Erro ao enviar. Tente novamente mais tarde.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
